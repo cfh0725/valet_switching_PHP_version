@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+valet stop
+brew unlink $1
+brew link --force --overwrite $1
+brew services stop $1
+brew services start $1
+composer global update
+rm -f ~/.config/valet/valet.sock
+valet install
